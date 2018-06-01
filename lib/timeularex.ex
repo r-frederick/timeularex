@@ -16,16 +16,32 @@ defmodule Timeularex do
     Supervisor.start_link(children, opts)
   end
 
+  def activities do
+    with {:ok, token} <- access_token(),
+         {:ok, %HTTPoison.Response{body: body}} <-
+           API.get("/activities", Authorization: "Bearer #{token}") do
+      {:ok, body}
+    else
+      _ -> {:error}
+    end
+  end
+
   def access_token do
     %{
-      apiKey: Config.api_key,
-      apiSecret: Config.api_secret
+      apiKey: Config.api_key(),
+      apiSecret: Config.api_secret()
     }
-      |> sign_in
+    |> sign_in
   end
 
   defp sign_in(body) do
-    ~s(/developer/sign-in)
+    response =
+      ~s(/developer/sign-in)
       |> API.post(body, [])
+
+    case response do
+      {:ok, %HTTPoison.Response{body: body}} -> {:ok, body["token"]}
+      _ -> {:error}
+    end
   end
 end

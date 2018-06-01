@@ -8,11 +8,15 @@ defmodule Timeularex.API do
 
   def process_request_body(body) do
     body
-    |> IO.inspect
-    |> Poison.encode!
+      |> Poison.encode!
   end
 
   def process_request_headers(headers) do
     headers ++ [{"Content-type", "application/json"}]
+  end
+
+  def process_response_body(body) do
+    body
+      |> Poison.decode!
   end
 end
