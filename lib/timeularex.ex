@@ -106,7 +106,7 @@ defmodule Timeularex do
 
   def start_tracking(activity_id) do
     # YYYY-MM-DDTHH:mm:ss.SSS
-    current_datetime = Timex.now() |> timeular_datetime_format
+    current_datetime = DateTime.utc_now() |> timeular_datetime_format
 
     "/tracking/#{activity_id}/start"
     |> Client.request(:post, %{startedAt: current_datetime})
@@ -118,7 +118,7 @@ defmodule Timeularex do
   end
 
   def stop_tracking(activity_id) do
-    current_datetime = Timex.now() |> timeular_datetime_format()
+    current_datetime = DateTime.utc_now() |> timeular_datetime_format()
 
     "/tracking/#{activity_id}/stop"
     |> Client.request(:post, %{stoppedAt: current_datetime})
@@ -149,6 +149,7 @@ defmodule Timeularex do
   defp timeular_datetime_format(datetime) do
     datetime
     |> DateTime.truncate(:millisecond)
-    |> Timex.format!("{YYYY}-{0M}-{0D}T{h24}:{m}:{s}{ss}")
+    |> DateTime.to_iso8601()
+    |> String.trim_trailing("Z")
   end
 end

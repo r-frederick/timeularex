@@ -7,6 +7,8 @@ defmodule Timeularex.MixProject do
       version: "0.1.0",
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
+      description: description(),
+      package: package(),
       deps: deps()
     ]
   end
@@ -21,8 +23,19 @@ defmodule Timeularex.MixProject do
   defp deps do
     [
       {:httpoison, "~> 1.0.0"},
-      {:poison, "~> 3.1"},
-      {:timex, "~> 3.1"}
+      {:poison, "~> 3.1"}
+    ]
+  end
+
+  defp description() do
+    "A Timeular API client."
+  end
+
+  defp package() do
+    [
+      maintainers: ["Ridge Frederick"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/r-frederick/timeularex"}
     ]
   end
 end
