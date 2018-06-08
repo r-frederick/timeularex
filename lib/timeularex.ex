@@ -10,7 +10,9 @@ defmodule Timeularex do
   alias Timeularex.Resources
 
   def start(_type, _args) do
-    children = []
+    children = [
+      Timeularex.Client
+    ]
 
     opts = [strategy: :one_for_one, name: Timeularex.Supervisor]
     Supervisor.start_link(children, opts)
