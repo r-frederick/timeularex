@@ -33,9 +33,9 @@ defmodule Timeularex.Client do
     response = apply(API, method, opts ++ [[Authorization: "Bearer #{state.token}"]])
 
     case response do
-      {:ok, %HTTPoison.Response{body: body, status_code: 200}} -> {:reply, body, state}
-      {:ok, %HTTPoison.Response{body: body, status_code: 404}} -> {:reply, body.message, %{}}
-      {:ok, %HTTPoison.Response{body: body, status_code: 401}} -> {:stop, body.message, %{}}
+      {:ok, %HTTPoison.Response{body: body, status_code: 200}} -> {:reply, {:ok, body}, state}
+      {:ok, %HTTPoison.Response{body: body, status_code: 404}} -> {:reply, {:error, body.message}, %{}}
+      {:ok, %HTTPoison.Response{body: body, status_code: 401}} -> {:stop, {:error, body.message}, %{}}
       unknown ->
         IO.inspect unknown
         {:stop, "unknown response received", %{}}
