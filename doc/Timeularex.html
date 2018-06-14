@@ -1,0 +1,869 @@
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.18.3">
+    <title>Timeularex – timeularex v0.1.1</title>
+    <link rel="stylesheet" href="dist/app-480ffdc169.css" />
+    
+      <link rel="canonical" href="https://hexdocs.pm/timeularex/Timeularex.html" />
+    
+    <script src="dist/sidebar_items-817581860e.js"></script>
+    
+    
+    
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  
+  <a href="api-reference.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+        timeularex
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.1
+      </h2>
+    </div>
+    
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+    
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+    
+
+    
+
+    
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">timeularex v0.1.1</small>
+        Timeularex
+        
+      </h1>
+
+      
+        <section id="moduledoc">
+          <p>NOTE: Timeularex is in early stages of development. Use in production
+should be considered with caution.</p>
+<p>Timeularex is an API client for the <a href="http://developers.timeular.com/public-api/">Timeular public API</a></p>
+<p>Timular is a service to improve time-tracking of activities.</p>
+<h2 id="module-configuration" class="section-heading">
+  <a href="#module-configuration" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Configuration
+</h2>
+
+<p>The client provides two options for configuration. The first involves the
+typical setting of variables in your <code class="inline">config.exs</code> file:</p>
+<pre><code class="elixir">config :timeularex,
+  api_key: &lt;&lt;API_KEY&gt;&gt;,
+  api_secret: &lt;&lt;API_SECRET&gt;&gt;,
+  api_url: &quot;https://api.timeular.com/api/v2&quot;</code></pre>
+<p>Additionally, you can utilize api_key/1 and api_secret/1 functions in the
+<code class="inline">TImeularex.Config</code> module.</p>
+<p>Your API key and secret can be retrieved from your <a href="https://profile.timeular.com/#/app/account">account app settings</a></p>
+
+        </section>
+      
+
+      
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+          
+
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#activate_device/1">activate_device(device_serial)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Sets the status of a device to active</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#activities/0">activities()</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>List all activities associated with the connected account</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#archive_activity/1">archive_activity(activity_id)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Archive an Activity. Time tracked with the Activity will be preserved</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#archived_activities/0">archived_activities()</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>List all archived Activities</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#assign_side_activity/2">assign_side_activity(device_side, activity_id)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Assign an Activity to a given device side</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_activity/1">create_activity(activity)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Create a new Activity. The activity should have a name and color. A Name
+doesn’t have to be unique. Optionally, you can also provide an Integration
+to which the activity will belong to. You can obtain list of enabled
+Integrations with integrations/0</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#deactivate_device/1">deactivate_device(device_serial)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Sets the status of a device to inactive</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#devices/0">devices()</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>List all devices</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#disable_device/1">disable_device(device_serial)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Disable a device</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#edit_tracking_note/2">edit_tracking_note(activity_id, note)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Edit the notes associated an Activity being tracked</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#enable_device/1">enable_device(device_serial)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Enable a device</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#init/1">init(_)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#integrations/0">integrations()</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>List all the integrations associated with the connected account</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_device/1">remove_device(device_serial)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Remove a device from the list of known devices. Use activate_device/1 to
+make the device active again</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reports/2">reports(start_timestamp, stop_timestamp)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start/2">start(type, args)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Called when an application is started</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_tracking/1">start_tracking(activity_id)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Start tracking a given Activity</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop_tracking/1">stop_tracking(activity_id)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Stop tracking a given Activity</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#tags_and_mentions/0">tags_and_mentions()</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#time_entries/2">time_entries(stopped_after, started_before)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Return all time entries that falls between a given time range</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#time_entry/1">time_entry(entry_id)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Return a time entry by ID</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#tracking/0">tracking()</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns information regarding what is currently being tracked</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unassign_side_activity/2">unassign_side_activity(device_side, activity_id)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Unassigns an Activity associated with a given device side</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_activity/1">update_activity(activity)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Update an existing Activity’s name and/or color</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_device_name/2">update_device_name(device_serial, name)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Update the name of a device</p>
+</div>
+  
+</div>
+
+  </div>
+
+
+          
+
+        </section>
+      
+
+      
+
+      
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+          <div class="detail" id="activate_device/1">
+  
+  
+  <div class="detail-header">
+    <a href="#activate_device/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">activate_device(device_serial)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Sets the status of a device to active.</p>
+
+  </section>
+</div>
+<div class="detail" id="activities/0">
+  
+  
+  <div class="detail-header">
+    <a href="#activities/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">activities()</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>List all activities associated with the connected account.</p>
+
+  </section>
+</div>
+<div class="detail" id="archive_activity/1">
+  
+  
+  <div class="detail-header">
+    <a href="#archive_activity/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">archive_activity(activity_id)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Archive an Activity. Time tracked with the Activity will be preserved.</p>
+
+  </section>
+</div>
+<div class="detail" id="archived_activities/0">
+  
+  
+  <div class="detail-header">
+    <a href="#archived_activities/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">archived_activities()</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>List all archived Activities.</p>
+
+  </section>
+</div>
+<div class="detail" id="assign_side_activity/2">
+  
+  
+  <div class="detail-header">
+    <a href="#assign_side_activity/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">assign_side_activity(device_side, activity_id)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Assign an Activity to a given device side.</p>
+
+  </section>
+</div>
+<div class="detail" id="create_activity/1">
+  
+  
+  <div class="detail-header">
+    <a href="#create_activity/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">create_activity(activity)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Create a new Activity. The activity should have a name and color. A Name
+doesn’t have to be unique. Optionally, you can also provide an Integration
+to which the activity will belong to. You can obtain list of enabled
+Integrations with integrations/0.</p>
+
+  </section>
+</div>
+<div class="detail" id="deactivate_device/1">
+  
+  
+  <div class="detail-header">
+    <a href="#deactivate_device/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">deactivate_device(device_serial)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Sets the status of a device to inactive.</p>
+
+  </section>
+</div>
+<div class="detail" id="devices/0">
+  
+  
+  <div class="detail-header">
+    <a href="#devices/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">devices()</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>List all devices.</p>
+
+  </section>
+</div>
+<div class="detail" id="disable_device/1">
+  
+  
+  <div class="detail-header">
+    <a href="#disable_device/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">disable_device(device_serial)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Disable a device.</p>
+
+  </section>
+</div>
+<div class="detail" id="edit_tracking_note/2">
+  
+  
+  <div class="detail-header">
+    <a href="#edit_tracking_note/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">edit_tracking_note(activity_id, note)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Edit the notes associated an Activity being tracked.</p>
+
+  </section>
+</div>
+<div class="detail" id="enable_device/1">
+  
+  
+  <div class="detail-header">
+    <a href="#enable_device/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">enable_device(device_serial)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Enable a device.</p>
+
+  </section>
+</div>
+<div class="detail" id="init/1">
+  
+  
+  <div class="detail-header">
+    <a href="#init/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">init(_)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="integrations/0">
+  
+  
+  <div class="detail-header">
+    <a href="#integrations/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">integrations()</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>List all the integrations associated with the connected account.</p>
+
+  </section>
+</div>
+<div class="detail" id="remove_device/1">
+  
+  
+  <div class="detail-header">
+    <a href="#remove_device/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">remove_device(device_serial)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Remove a device from the list of known devices. Use activate_device/1 to
+make the device active again.</p>
+
+  </section>
+</div>
+<div class="detail" id="reports/2">
+  
+  
+  <div class="detail-header">
+    <a href="#reports/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">reports(start_timestamp, stop_timestamp)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="start/2">
+  
+  
+  <div class="detail-header">
+    <a href="#start/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">start(type, args)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Called when an application is started.</p>
+<p>This function is called when an application is started using
+<a href="https://hexdocs.pm/elixir/Application.html#start/2"><code class="inline">Application.start/2</code></a> (and functions on top of that, such as
+<a href="https://hexdocs.pm/elixir/Application.html#ensure_started/2"><code class="inline">Application.ensure_started/2</code></a>). This function should start the top-level
+process of the application (which should be the top supervisor of the
+application’s supervision tree if the application follows the OTP design
+principles around supervision).</p>
+<p><code class="inline">start_type</code> defines how the application is started:</p>
+<ul>
+<li><code class="inline">:normal</code> - used if the startup is a normal startup or if the application
+is distributed and is started on the current node because of a failover
+from another node and the application specification key <code class="inline">:start_phases</code>
+is <code class="inline">:undefined</code>.
+</li>
+<li><code class="inline">{:takeover, node}</code> - used if the application is distributed and is
+started on the current node because of a failover on the node <code class="inline">node</code>.
+</li>
+<li><code class="inline">{:failover, node}</code> - used if the application is distributed and is
+started on the current node because of a failover on node <code class="inline">node</code>, and the
+application specification key <code class="inline">:start_phases</code> is not <code class="inline">:undefined</code>.
+</li>
+</ul>
+<p><code class="inline">start_args</code> are the arguments passed to the application in the <code class="inline">:mod</code>
+specification key (e.g., <code class="inline">mod: {MyApp, [:my_args]}</code>).</p>
+<p>This function should either return <code class="inline">{:ok, pid}</code> or <code class="inline">{:ok, pid, state}</code> if
+startup is successful. <code class="inline">pid</code> should be the PID of the top supervisor. <code class="inline">state</code>
+can be an arbitrary term, and if omitted will default to <code class="inline">[]</code>; if the
+application is later stopped, <code class="inline">state</code> is passed to the <code class="inline">stop/1</code> callback (see
+the documentation for the <code class="inline">c:stop/1</code> callback for more information).</p>
+<p><code class="inline">use Application</code> provides no default implementation for the <a href="#start/2"><code class="inline">start/2</code></a>
+callback.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/elixir/Application.html#c:start/2"><code class="inline">Application.start/2</code></a>.</p>
+
+  </section>
+</div>
+<div class="detail" id="start_tracking/1">
+  
+  
+  <div class="detail-header">
+    <a href="#start_tracking/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">start_tracking(activity_id)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Start tracking a given Activity.</p>
+
+  </section>
+</div>
+<div class="detail" id="stop_tracking/1">
+  
+  
+  <div class="detail-header">
+    <a href="#stop_tracking/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">stop_tracking(activity_id)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Stop tracking a given Activity.</p>
+
+  </section>
+</div>
+<div class="detail" id="tags_and_mentions/0">
+  
+  
+  <div class="detail-header">
+    <a href="#tags_and_mentions/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">tags_and_mentions()</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="time_entries/2">
+  
+  
+  <div class="detail-header">
+    <a href="#time_entries/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">time_entries(stopped_after, started_before)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Return all time entries that falls between a given time range.</p>
+
+  </section>
+</div>
+<div class="detail" id="time_entry/1">
+  
+  
+  <div class="detail-header">
+    <a href="#time_entry/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">time_entry(entry_id)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Return a time entry by ID.</p>
+
+  </section>
+</div>
+<div class="detail" id="tracking/0">
+  
+  
+  <div class="detail-header">
+    <a href="#tracking/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">tracking()</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Returns information regarding what is currently being tracked.</p>
+
+  </section>
+</div>
+<div class="detail" id="unassign_side_activity/2">
+  
+  
+  <div class="detail-header">
+    <a href="#unassign_side_activity/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">unassign_side_activity(device_side, activity_id)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Unassigns an Activity associated with a given device side.</p>
+
+  </section>
+</div>
+<div class="detail" id="update_activity/1">
+  
+  
+  <div class="detail-header">
+    <a href="#update_activity/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">update_activity(activity)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Update an existing Activity’s name and/or color.</p>
+
+  </section>
+</div>
+<div class="detail" id="update_device_name/2">
+  
+  
+  <div class="detail-header">
+    <a href="#update_device_name/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">update_device_name(device_serial, name)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Update the name of a device.</p>
+
+  </section>
+</div>
+
+        </section>
+      
+
+      
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.3),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-9bd040e5e5.js"></script>
+  
+  
+  
+  
+  </body>
+</html>
+
