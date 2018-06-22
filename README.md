@@ -29,8 +29,7 @@ The client provides two options for configuration. The first involves the
 ```elixir
 config :timeularex,
     api_key: <<API_KEY>>,
-    api_secret: <<API_SECRET>>,
-    api_url: "https://api.timeular.com/api/v2"
+    api_secret: <<API_SECRET>>
 ```
 
 Additionally, you can utilize api_key/1 and api_secret/1 functions in 

@@ -2,8 +2,10 @@ defmodule Timeularex.API do
   use HTTPoison.Base
   alias Timeularex.Config
 
+  @base_url "https://api.timeular.com/api/v2"
+
   def process_url(url) do
-    Config.base_url <> url
+    @base_url <> url
   end
 
   def process_request_body(body) do
