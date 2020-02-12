@@ -5,7 +5,7 @@ defmodule Timeularex.MixProject do
     [
       app: :timeularex,
       version: "0.1.2",
-      elixir: "~> 1.6",
+      elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       description: description(),
       package: package(),
@@ -24,7 +24,7 @@ defmodule Timeularex.MixProject do
     [
       {:httpoison, "~> 1.6.2"},
       {:poison, "~> 3.1"},
-      {:ex_doc, ">= 0.0.0", only: :dev}
+      {:ex_doc, ">= 0.21.0", only: :dev}
     ]
   end
 

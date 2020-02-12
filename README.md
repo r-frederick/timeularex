@@ -16,7 +16,7 @@ dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:timeularex, "~> 0.1.0"}
+    {:timeularex, "~> 0.1.2"}
   ]
 end
 ```
@@ -33,7 +33,7 @@ config :timeularex,
 ```
 
 Additionally, you can utilize api_key/1 and api_secret/1 functions in 
-the `TImeularex.Config` module.
+the `Timeularex.Config` module.
 
 Your API key and secret can be retrieved from your 
 [account app settings](https://profile.timeular.com/#/app/account).
